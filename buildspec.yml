@@ -27,7 +27,7 @@ phases:
 
   post_build:
     commands:
-      - printf '[{"name":"ecs-web","imageUri":"%s"}]' "$IMAGE_URI:$IMAGE_TAG" > imagedefinitions.json
+      - printf '[{"name":"web","imageUri":"%s"}]' "$IMAGE_URI:$IMAGE_TAG" > imagedefinitions.json
 
 artifacts:
   files:
