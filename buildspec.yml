@@ -5,13 +5,13 @@ phases:
     commands:
       - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
       - REGION=ap-south-1
-      - REPO_NAME=my-ecs-repo
+      - REPO_NAME=ecs-lab-repo
       - IMAGE_URI=$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$REPO_NAME
 
       - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com
 
       # Prefix for tags (change if you want)
-      - PREFIX=ecs-web
+      - PREFIX=web
 
       # If RELEASE_TAG is provided, use it. Otherwise auto-generate PREFIX-v<build_number>
       - IMAGE_TAG=${RELEASE_TAG:-$PREFIX-v$CODEBUILD_BUILD_NUMBER}
